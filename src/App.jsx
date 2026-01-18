@@ -48,6 +48,22 @@ function App() {
           <strong>Privacy-first:</strong> ACDS only exchanges connection metadata—your audio and video
           never pass through our servers. All media flows peer-to-peer with end-to-end encryption.
         </p>
+
+        <h3>🏗️ Official ACDS Infrastructure</h3>
+        <p>The official ACDS deployment consists of two components:</p>
+        <ul>
+          <li>
+            <strong>This website</strong> (<code>{window.location.hostname}</code>) - Serves public keys over HTTPS
+          </li>
+          <li>
+            <strong>ACDS server</strong> (<code>discovery-server.ascii-chat.com:27225</code>) - Handles session management (TCP)
+          </li>
+        </ul>
+        <p>
+          The ascii-chat client is programmed to automatically connect to{' '}
+          <code>discovery-server.ascii-chat.com:27225</code> and trust keys from this website.
+          No manual configuration needed—it just works!
+        </p>
       </section>
 
       <section>
@@ -104,21 +120,20 @@ ascii-chat --help`}</code></pre>
         <h2>💻 Usage Examples</h2>
 
         <h3>Server: Create a Session</h3>
-        <pre><code>{`# Start a server and register with ACDS
-ascii-chat server --acds \\
-  --acds-server ${window.location.hostname} \\
-  --acds-port 27225
+        <pre><code>{`# Start a server and register with ACDS (uses discovery-server.ascii-chat.com by default)
+ascii-chat server --acds
 
 # ACDS will return a session string like:
 # Session: happy-sunset-ocean`}</code></pre>
 
         <h3>Client: Join a Session</h3>
-        <pre><code>{`# Connect using the session string
+        <pre><code>{`# Connect using the session string (uses discovery-server.ascii-chat.com by default)
 ascii-chat client happy-sunset-ocean
 
-# Or with explicit ACDS server
-ascii-chat client happy-sunset-ocean \\
-  --acds-server ${window.location.hostname}`}</code></pre>
+# That's it! No configuration needed - the client automatically:
+# - Connects to discovery-server.ascii-chat.com:27225
+# - Trusts keys from ${window.location.hostname}
+# - Looks up the session and connects to the server`}</code></pre>
 
         <h3>Manual Key Verification (Optional)</h3>
         <pre><code>{`# Download and verify SSH public key
@@ -127,10 +142,8 @@ ssh-keygen -lf key.pub
 
 # Verify fingerprint matches: SHA256:Uvr6k+9VjcC60gbVtcvwiVZDsIfB6jZvMuD4G2FME6w
 
-# Connect with explicit key verification
-ascii-chat client happy-sunset-ocean \\
-  --acds-server ${window.location.hostname} \\
-  --acds-key ./key.pub`}</code></pre>
+# Connect with explicit key verification (optional - automatic by default)
+ascii-chat client happy-sunset-ocean --acds-key ./key.pub`}</code></pre>
       </section>
 
       <section>
