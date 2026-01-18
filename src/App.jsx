@@ -136,7 +136,7 @@ ascii-chat client happy-sunset-ocean \\
       <section>
         <h2>🔒 Security</h2>
         <ul>
-          <li><strong>Automatic Trust:</strong> The ascii-chat client automatically trusts keys from <code>acds.ascii-chat.com</code> downloaded over HTTPS (official server only)</li>
+          <li><strong>Automatic Trust:</strong> The ascii-chat client automatically trusts keys from <code>discovery.ascii-chat.com</code> downloaded over HTTPS (official server only)</li>
           <li><strong>Key Verification:</strong> You can manually verify keys using the fingerprints shown above</li>
           <li><strong>Identity Verification:</strong> ACDS supports optional Ed25519 identity verification for servers and clients</li>
           <li><strong>No Media Access:</strong> ACDS never sees your video or audio—only connection metadata</li>
