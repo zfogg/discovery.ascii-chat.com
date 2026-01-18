@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 
 function App() {
@@ -192,6 +193,7 @@ ascii-chat client session-name \\
           ascii-chat Discovery Service · Hosted at <code>{window.location.hostname}:27225</code>
         </p>
       </footer>
+      <Analytics />
     </div>
   )
 }
