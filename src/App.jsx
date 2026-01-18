@@ -23,6 +23,18 @@ function App() {
       .catch(e => console.error('Failed to load GPG key:', e))
   }, [])
 
+  const handleSshDownload = () => {
+    if (window.gtag) {
+      window.gtag('event', 'download_ssh_key')
+    }
+  }
+
+  const handleGpgDownload = () => {
+    if (window.gtag) {
+      window.gtag('event', 'download_gpg_key')
+    }
+  }
+
   return (
     <div className="container">
       <header>
@@ -92,14 +104,14 @@ function App() {
           SHA256:Uvr6k+9VjcC60gbVtcvwiVZDsIfB6jZvMuD4G2FME6w
         </div>
         <pre><code>{sshKey || 'Loading...'}</code></pre>
-        <a href="/key.pub" download className="download-link">⬇ Download SSH Public Key</a>
+        <a href="/key.pub" download className="download-link" onClick={handleSshDownload}>⬇ Download SSH Public Key</a>
 
         <h3>GPG Ed25519 Public Key</h3>
         <div className="fingerprint">
           0AAE 7D67 D734 6959 74C3  6CEE C380 DA08 AF18 35B9
         </div>
         <pre><code>{gpgKey || 'Loading...'}</code></pre>
-        <a href="/key.gpg" download className="download-link">⬇ Download GPG Public Key</a>
+        <a href="/key.gpg" download className="download-link" onClick={handleGpgDownload}>⬇ Download GPG Public Key</a>
       </section>
 
       <section>
