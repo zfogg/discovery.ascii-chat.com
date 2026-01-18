@@ -52,15 +52,19 @@ function App() {
           These Ed25519 public keys are used to verify the identity of the official ACDS server at{' '}
           <code>acds.ascii-chat.com</code>. Download and verify these keys before connecting.
         </p>
-        <p>
-          Keys are available at:{' '}
-          <a href="/key.pub" target="_blank" rel="noopener noreferrer">
-            <code>https://acds.ascii-chat.com/key.pub</code>
-          </a> (SSH) and{' '}
-          <a href="/key.gpg" target="_blank" rel="noopener noreferrer">
-            <code>https://acds.ascii-chat.com/key.gpg</code>
-          </a> (GPG)
-        </p>
+        <p>Keys are available at:</p>
+        <ul>
+          <li>
+            <a href="/key.pub" target="_blank" rel="noopener noreferrer">
+              <code>https://acds.ascii-chat.com/key.pub</code>
+            </a> (SSH)
+          </li>
+          <li>
+            <a href="/key.gpg" target="_blank" rel="noopener noreferrer">
+              <code>https://acds.ascii-chat.com/key.gpg</code>
+            </a> (GPG)
+          </li>
+        </ul>
 
         <h3>SSH Ed25519 Public Key</h3>
         <div className="fingerprint">
