@@ -50,7 +50,7 @@ function App() {
         <h1>🔍 ascii-chat Discovery Service</h1>
         <p className="subtitle">Official ACDS Public Keys</p>
         <p className="subtitle">
-          Part of the <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat', 'ascii-chat GitHub (header)')}>
+          Part of the <a href="https://ascii-chat.com" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://ascii-chat.com', 'ascii-chat website (header)')}>
             ascii-chat
           </a> project
         </p>
@@ -60,7 +60,7 @@ function App() {
         <h2>📋 About ACDS</h2>
         <p>
           The <strong>ascii-chat Discovery Service (ACDS)</strong> is a core component of{' '}
-          <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat', 'ascii-chat GitHub (about)')}>
+          <a href="https://ascii-chat.com" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://ascii-chat.com', 'ascii-chat website (about)')}>
             ascii-chat
           </a>, a real-time terminal-based video chat application. ACDS enables session discovery using
           memorable three-word strings like <code>happy-sunset-ocean</code> instead of IP addresses.
