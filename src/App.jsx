@@ -84,7 +84,6 @@ function App() {
         <p>
           The ascii-chat client is programmed to automatically connect to{' '}
           <code>discovery-server.ascii-chat.com:27225</code> and trust keys from this website.
-          No manual configuration needed—it just works!
         </p>
       </section>
 
@@ -109,16 +108,20 @@ function App() {
         </ul>
 
         <h3>SSH Ed25519 Public Key</h3>
+        <p><strong>Fingerprint:</strong></p>
         <div className="fingerprint">
           SHA256:Uvr6k+9VjcC60gbVtcvwiVZDsIfB6jZvMuD4G2FME6w
         </div>
+        <p><strong>Public Key:</strong></p>
         <pre><code>{sshKey || 'Loading...'}</code></pre>
         <a href="/key.pub" download className="download-link" onClick={handleSshDownload}>⬇ Download SSH Public Key</a>
 
         <h3>GPG Ed25519 Public Key</h3>
+        <p><strong>Fingerprint:</strong></p>
         <div className="fingerprint">
           0AAE 7D67 D734 6959 74C3  6CEE C380 DA08 AF18 35B9
         </div>
+        <p><strong>Public Key:</strong></p>
         <pre><code>{gpgKey || 'Loading...'}</code></pre>
         <a href="/key.gpg" download className="download-link" onClick={handleGpgDownload}>⬇ Download GPG Public Key</a>
       </section>
@@ -185,13 +188,20 @@ ascii-chat client happy-sunset-ocean --acds-key ./key.pub`}</code></pre>
           You can run a private ACDS server for your organization. Third-party ACDS servers require
           clients to explicitly configure your public key via the <code>--acds-key</code> flag.
         </p>
-        <pre><code>{`# Start your own ACDS server
-ascii-chat discovery-server 0.0.0.0 :: --port 27225
+        <pre><code>{`# Start your own ACDS server with SSH and GPG keys
+ascii-chat discovery-server 0.0.0.0 :: --port 27225 \\
+  --key ~/.ssh/id_ed25519 \\
+  --key gpg:YOUR_GPG_KEY_ID
 
-# Clients must explicitly trust your key
+# Server with GPG key
+ascii-chat server --key gpg:SERVER_GPG_KEY_ID
+
+# Client connects with explicit ACDS trust and authenticates with SSH key
 ascii-chat client session-name \\
   --acds-server your-acds.example.com \\
-  --acds-key https://your-acds.example.com/key.pub`}</code></pre>
+  --acds-key https://your-acds.example.com/key.pub \\
+  --key ~/.ssh/id_ed25519 \\
+  --server-key gpg:SERVER_GPG_KEY_ID`}</code></pre>
         <p>
           <strong>Important:</strong> You should share the public key with ascii-chatters in a safe way.
           We recommend pre-sharing them safely somehow or hosting them on a website at a domain you control and
