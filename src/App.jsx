@@ -54,8 +54,12 @@ function App() {
         </p>
         <p>
           Keys are available at:{' '}
-          <code>https://acds.ascii-chat.com/key.pub</code> (SSH) and{' '}
-          <code>https://acds.ascii-chat.com/key.gpg</code> (GPG)
+          <a href="/key.pub" target="_blank" rel="noopener noreferrer">
+            <code>https://acds.ascii-chat.com/key.pub</code>
+          </a> (SSH) and{' '}
+          <a href="/key.gpg" target="_blank" rel="noopener noreferrer">
+            <code>https://acds.ascii-chat.com/key.gpg</code>
+          </a> (GPG)
         </p>
 
         <h3>SSH Ed25519 Public Key</h3>
