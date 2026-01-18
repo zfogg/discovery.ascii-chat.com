@@ -4,8 +4,12 @@ import './App.css'
 function App() {
   const [sshKey, setSshKey] = useState('')
   const [gpgKey, setGpgKey] = useState('')
+  const [baseUrl, setBaseUrl] = useState('')
 
   useEffect(() => {
+    // Get the current domain
+    setBaseUrl(window.location.origin)
+
     // Fetch public keys
     fetch('/key.pub')
       .then(r => r.text())
@@ -50,18 +54,18 @@ function App() {
         <h2>🔑 Public Keys</h2>
         <p>
           These Ed25519 public keys are used to verify the identity of the official ACDS server at{' '}
-          <code>acds.ascii-chat.com</code>. Download and verify these keys before connecting.
+          <code>{window.location.hostname}</code>. Download and verify these keys before connecting.
         </p>
         <p>Keys are available at:</p>
         <ul>
           <li>
             <a href="/key.pub" target="_blank" rel="noopener noreferrer">
-              <code>https://acds.ascii-chat.com/key.pub</code>
+              <code>{baseUrl}/key.pub</code>
             </a> (SSH)
           </li>
           <li>
             <a href="/key.gpg" target="_blank" rel="noopener noreferrer">
-              <code>https://acds.ascii-chat.com/key.gpg</code>
+              <code>{baseUrl}/key.gpg</code>
             </a> (GPG)
           </li>
         </ul>
@@ -102,7 +106,7 @@ ascii-chat --help`}</code></pre>
         <h3>Server: Create a Session</h3>
         <pre><code>{`# Start a server and register with ACDS
 ascii-chat server --acds \\
-  --acds-server acds.ascii-chat.com \\
+  --acds-server ${window.location.hostname} \\
   --acds-port 27225
 
 # ACDS will return a session string like:
@@ -112,27 +116,27 @@ ascii-chat server --acds \\
         <pre><code>{`# Connect using the session string
 ascii-chat client happy-sunset-ocean
 
-# Or with explicit ACDS server (auto-trusts acds.ascii-chat.com over HTTPS)
+# Or with explicit ACDS server
 ascii-chat client happy-sunset-ocean \\
-  --acds-server acds.ascii-chat.com`}</code></pre>
+  --acds-server ${window.location.hostname}`}</code></pre>
 
         <h3>Manual Key Verification (Optional)</h3>
         <pre><code>{`# Download and verify SSH public key
-curl -O https://acds.ascii-chat.com/key.pub
+curl -O ${baseUrl}/key.pub
 ssh-keygen -lf key.pub
 
 # Verify fingerprint matches: SHA256:Uvr6k+9VjcC60gbVtcvwiVZDsIfB6jZvMuD4G2FME6w
 
 # Connect with explicit key verification
 ascii-chat client happy-sunset-ocean \\
-  --acds-server acds.ascii-chat.com \\
+  --acds-server ${window.location.hostname} \\
   --acds-key ./key.pub`}</code></pre>
       </section>
 
       <section>
         <h2>🔒 Security</h2>
         <ul>
-          <li><strong>Automatic Trust:</strong> The ascii-chat client automatically trusts keys from <code>acds.ascii-chat.com</code> downloaded over HTTPS</li>
+          <li><strong>Automatic Trust:</strong> The ascii-chat client automatically trusts keys from <code>acds.ascii-chat.com</code> downloaded over HTTPS (official server only)</li>
           <li><strong>Key Verification:</strong> You can manually verify keys using the fingerprints shown above</li>
           <li><strong>Identity Verification:</strong> ACDS supports optional Ed25519 identity verification for servers and clients</li>
           <li><strong>No Media Access:</strong> ACDS never sees your video or audio—only connection metadata</li>
@@ -172,7 +176,7 @@ ascii-chat client session-name \\
           <a href="https://github.com/zfogg/ascii-chat/releases" target="_blank" rel="noopener noreferrer">📦 Releases</a>
         </p>
         <p className="legal">
-          ascii-chat Discovery Service · Hosted at <code>acds.ascii-chat.com:27225</code>
+          ascii-chat Discovery Service · Hosted at <code>{window.location.hostname}:27225</code>
         </p>
       </footer>
     </div>
