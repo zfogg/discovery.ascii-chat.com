@@ -35,13 +35,22 @@ function App() {
     }
   }
 
+  const handleLinkClick = (url, text) => {
+    if (window.gtag) {
+      window.gtag('event', 'link_click', {
+        link_url: url,
+        link_text: text
+      })
+    }
+  }
+
   return (
     <div className="container">
       <header>
         <h1>🔍 ascii-chat Discovery Service</h1>
         <p className="subtitle">Official ACDS Public Keys</p>
         <p className="subtitle">
-          Part of the <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer">
+          Part of the <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat', 'ascii-chat GitHub (header)')}>
             ascii-chat
           </a> project
         </p>
@@ -51,7 +60,7 @@ function App() {
         <h2>📋 About ACDS</h2>
         <p>
           The <strong>ascii-chat Discovery Service (ACDS)</strong> is a core component of{' '}
-          <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat', 'ascii-chat GitHub (about)')}>
             ascii-chat
           </a>, a real-time terminal-based video chat application. ACDS enables session discovery using
           memorable three-word strings like <code>happy-sunset-ocean</code> instead of IP addresses.
@@ -187,19 +196,19 @@ ascii-chat client session-name \\
           <strong>Important:</strong> You should share the public key with ascii-chatters in a safe way.
           We recommend pre-sharing them safely somehow or hosting them on a website at a domain you control and
           serving them over HTTPS like we do.
-          See the <a href="https://zfogg.github.io/ascii-chat/group__module__acds.html#acds_deployment" target="_blank" rel="noopener noreferrer">ascii-chat documentation</a> for details.
+          See the <a href="https://zfogg.github.io/ascii-chat/group__module__acds.html#acds_deployment" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://zfogg.github.io/ascii-chat/group__module__acds.html#acds_deployment', 'ACDS deployment documentation')}>ascii-chat documentation</a> for details.
         </p>
       </section>
 
       <footer>
         <p>
-          <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer">📦 GitHub</a>
+          <a href="https://github.com/zfogg/ascii-chat" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat', 'GitHub (footer)')}>📦 GitHub</a>
           {' · '}
-          <a href="https://zfogg.github.io/ascii-chat/group__module__acds.html" target="_blank" rel="noopener noreferrer">📚 ACDS Documentation</a>
+          <a href="https://zfogg.github.io/ascii-chat/group__module__acds.html" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://zfogg.github.io/ascii-chat/group__module__acds.html', 'ACDS Documentation (footer)')}>📚 ACDS Documentation</a>
           {' · '}
-          <a href="https://github.com/zfogg/ascii-chat/issues" target="_blank" rel="noopener noreferrer">🐛 Issues</a>
+          <a href="https://github.com/zfogg/ascii-chat/issues" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat/issues', 'Issues')}>🐛 Issues</a>
           {' · '}
-          <a href="https://github.com/zfogg/ascii-chat/releases" target="_blank" rel="noopener noreferrer">📦 Releases</a>
+          <a href="https://github.com/zfogg/ascii-chat/releases" target="_blank" rel="noopener noreferrer" onClick={() => handleLinkClick('https://github.com/zfogg/ascii-chat/releases', 'Releases')}>📦 Releases</a>
         </p>
         <p className="legal">
           ascii-chat Discovery Service · Hosted at <code>{window.location.hostname}:27225</code>
