@@ -70,6 +70,10 @@ function Home() {
             <strong>Privacy-first:</strong> ACDS only exchanges connection metadata—your audio and video
             never pass through our servers. All media flows peer-to-peer with end-to-end encryption.
           </p>
+          <p className="leading-relaxed mb-4 text-sm sm:text-base">
+            Session strings use 2,500 curated adjectives and 5,000 nouns derived from WordNet and filtered by word frequency,
+            providing 62.5 billion possible combinations with excellent collision resistance (~250k concurrent sessions before first collision).
+          </p>
 
           <h3 className="text-[#e0e0e0] text-lg sm:text-xl mt-6 mb-2">🏗️ Official ACDS Infrastructure</h3>
           <p className="leading-relaxed mb-4 text-sm sm:text-base">The official ACDS deployment consists of two components:</p>
